@@ -1,1 +1,59 @@
+---
+title: "Let's make a plot!"
+description: "this plot will update every time there is new data (and whenever the github action runs)"
+author: 
+  - name: Frankthetank
+    affiliations: 
+      - Wa DOH
+      - DIQA
+format: 
+  html: 
+    css: styles.css
+    toc: true
+    number-sections: true
+    class-output: "watch"
+
+    
+---
+```{r}
+#| echo: false
+#| results: false
+#| message: false
+library(tibble)
+library(ggplot2)
+library(dplyr)
+```
+
+```{r setup}
+#| echo: fenced
+#| results: hide
+setwd('..')
+setwd('..')
+knitr::read_chunk(file.path(getwd(),"external_script.R"))
+
+```
+
+```{r read-chunk}
+#| echo: false
+#| results: false
+
+```
+
+
+here's an intro about my code
+
+# Code
+
+this code will:
+
+-   read in the airquality dataset
+-   produce a ggplot of it
+-   the ggplot will be stratified by month
+
+
+```{r make-plot}
+#| echo: fenced
+
+```
+
 

@@ -1,0 +1,52 @@
+---
+title: "check"
+format: revealjs
+echo: true
+revealjs-plugins:
+  - codewindow
+knitr: true
+---
+
+using `code-line-numbers: "|1-5"`
+
+:::{.codewindow width="500px"}
+script.r
+```{r}
+#| code-line-numbers: "|1-5"
+#| eval: false
+library(tidyverse)
+mtcars %>%
+  arrange(desc(modification_time)) %>%
+  slice(1) %>%
+  pull(mpg)
+
+fs::dir_info(here::here()) %>%
+  arrange(desc(modification_time)) %>%
+  slice(1) %>%
+  pull(path) %>%
+  readr::read_csv
+```
+
+:::
+
+# regular code block - this works
+using `code-line-numbers: "|1-5"`
+
+```{r}
+#| eval: false
+#| code-line-numbers: "|1-5"
+library(tidyverse)
+mtcars %>%
+  arrange(desc(modification_time)) %>%
+  slice(1) %>%
+  pull(mpg)
+
+fs::dir_info(here::here()) %>%
+  arrange(desc(modification_time)) %>%
+  slice(1) %>%
+  pull(path) %>%
+  readr::read_csv
+  
+
+```
+

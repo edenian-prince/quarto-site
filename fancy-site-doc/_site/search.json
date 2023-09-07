@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "plots/plot1.html",
+    "href": "plots/plot1.html",
+    "title": "Let’s make a plot!",
+    "section": "",
+    "text": "```{r setup}\n#| results: hide\nsetwd('..')\nsetwd('..')\nknitr::read_chunk(file.path(getwd(),\"external_script.R\"))\n```\n\nhere’s an intro about my code\n\n1 Code\nthis code will:\n\nread in the airquality dataset\nproduce a ggplot of it\nthe ggplot will be stratified by month\n\n\n```{r make-plot}\n(\n  plot &lt;- df |&gt;\n    ggplot() + \n    geom_point(aes(Ozone,Temp)) +\n    facet_grid(~Month)\n)\n```\n\nWarning: Removed 37 rows containing missing values (geom_point)."
+  },
+  {
+    "objectID": "scripts/script.html",
+    "href": "scripts/script.html",
+    "title": "Script Documentation",
+    "section": "",
+    "text": "1 Here’s the set up\nFirst we need to read in the external R script that lives in the repo.\nUse knitr::read_chunk() to read that file, and then you can call the chunk of code you want to display here in the document.\nNow, any time someone pushes an update to that external script in the repo, this website can automatically pull those changes and reflect the changes in code.\nNo more copy and paste!\n\nsetwd('..')\nsetwd('..')\nknitr::read_chunk(file.path(getwd(),\"external_script.R\"))\n\nhere’s an intro about my code\n\n\n2 Code\nthis code will:\n\ngo into your file folder\nsort the files by datetime\nchoose the most recent file\nselect the file path\nthen read in the file path and assign it to df\n\n\n(df &lt;- airquality |&gt;\n  arrange(desc(Month)) |&gt;\n  as_tibble())\n\n# A tibble: 153 × 6\n   Ozone Solar.R  Wind  Temp Month   Day\n   &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;\n 1    96     167   6.9    91     9     1\n 2    78     197   5.1    92     9     2\n 3    73     183   2.8    93     9     3\n 4    91     189   4.6    93     9     4\n 5    47      95   7.4    87     9     5\n 6    32      92  15.5    84     9     6\n 7    20     252  10.9    80     9     7\n 8    23     220  10.3    78     9     8\n 9    21     230  10.9    75     9     9\n10    24     259   9.7    73     9    10\n# … with 143 more rows\n\n\n\nNote: that code above comes from an external script. To call that code, all you need to do is the following, where the code chunk is blank but contains the name of the chunk in the external file - {r chunk-name}\n\n```{r read-chunk}\n#| eval: false\n\n(df &lt;- airquality |&gt;\n  arrange(desc(Month)) |&gt;\n  as_tibble())\n```"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "fancy-site-doc",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2\n\n\n\ntry &lt;- function(x){\n  x |&gt;\n    stats::filter(random &gt;1)\n}"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  }
+]

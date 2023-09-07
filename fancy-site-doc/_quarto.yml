@@ -5,14 +5,32 @@ website:
   title: "fancy-site-doc"
   navbar:
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - text: Home
+        menu: 
+          - href: index.qmd
+            text: "0: Intro"
+          - href: home/how_to.qmd
+            text: "1: How to create this doc"
+          - href: home/link_code.qmd
+            text: "2: How to link code to doc"
+          - href: home/renv.qmd
+            text: "3: Virtual Environments"
+      - text: Scripts
+        menu:
+          - href: scripts/script.qmd
+            text: "0: my script"
+      - text: Plots
+        menu: 
+          - href: plots/plot1.qmd
+            text: "0: my plot"
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    theme: 
+      - cosmo
+      - styles.scss
+    scss: styles.scss
+    highlight-style: espresso
     toc: true
 
 editor: visual

@@ -1,1 +1,72 @@
+---
+title: "Script Documentation"
+description: "showing how the code works for my script"
+author: 
+  - name: Frankthetank
+    affiliations: 
+      - Wa DOH
+      - DIQA
+format: 
+  html: 
+    scss: styles.scss
+    toc: true
+    number-sections: true
+    class-output: "watch"
+---
+
+# Here's the set up
+
+First we need to read in the external R script that lives in the repo.
+
+Use `knitr::read_chunk()` to read that file, and then you can call the chunk of code you want to display here in the document.
+
+Now, any time someone pushes an update to that external script in the repo, this website can automatically pull those changes and reflect the changes in code.
+
+**No more copy and paste!**
+
+```{r}
+#| echo: false
+#| results: false
+#| message: false
+library(tibble)
+library(ggplot2)
+library(dplyr)
+```
+
+```{r setup}
+#| results: hide
+setwd('..')
+setwd('..')
+knitr::read_chunk(file.path(getwd(),"external_script.R"))
+```
+
+here's an intro about my code
+
+# Code
+
+this code will:
+
+-   go into your file folder
+-   sort the files by datetime
+-   choose the most recent file
+-   select the file path
+-   then read in the file path and assign it to `df`
+
+```{r read-chunk}
+#| eval: true
+#| class-output: "watch"
+
+```
+
+
+<br>
+
+Note: that code above comes from an external script. To call that code, all you need to do is the following, where the code chunk is blank but contains the name of the chunk in the external file - `{r chunk-name}`
+
+```{r read-chunk}
+#| echo: fenced
+#| eval: false
+
+
+```
 

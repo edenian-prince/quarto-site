@@ -1,1 +1,9 @@
-/* css styles */
+/*-- scss:defaults --*/
+
+
+/*-- define boostrap variables --*/
+.watch {
+  background-color: lightpurple;
+  border: 3px solid purple;
+  font-weight: bold;
+}
