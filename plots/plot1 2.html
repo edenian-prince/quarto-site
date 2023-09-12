@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Frankthetank">
-<meta name="description" content="showing how the code works for my script">
+<meta name="description" content="this plot will update every time there is new data (and whenever the github action runs)">
 
-<title>fancy-site-doc - Script Documentation</title>
+<title>fancy-site-doc - Let’s make a plot!</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -102,6 +102,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -182,8 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#heres-the-set-up" id="toc-heres-the-set-up" class="nav-link active" data-scroll-target="#heres-the-set-up"><span class="header-section-number">1</span> Here’s the set up</a></li>
-  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code"><span class="header-section-number">2</span> Code</a></li>
+  <li><a href="#code" id="toc-code" class="nav-link active" data-scroll-target="#code"><span class="header-section-number">1</span> Code</a></li>
   </ul>
 </nav>
     </div>
@@ -192,12 +192,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Script Documentation</h1>
+<h1 class="title">Let’s make a plot!</h1>
 </div>
 
 <div>
   <div class="description">
-    showing how the code works for my script
+    this plot will update every time there is new data (and whenever the github action runs)
   </div>
 </div>
 
@@ -229,59 +229,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="heres-the-set-up" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Here’s the set up</h1>
-<p>First we need to read in the external R script that lives in the repo.</p>
-<p>Use <code>knitr::read_chunk()</code> to read that file, and then you can call the chunk of code you want to display here in the document.</p>
-<p>Now, any time someone pushes an update to that external script in the repo, this website can automatically pull those changes and reflect the changes in code.</p>
-<p><strong>No more copy and paste!</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">'..'</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">'..'</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">read_chunk</span>(<span class="fu">file.path</span>(<span class="fu">getwd</span>(),<span class="st">"external_script.R"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| results: hide</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in">setwd('..')</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="in">setwd('..')</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::read_chunk(file.path(getwd(),"external_script.R"))</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>here’s an intro about my code</p>
-</section>
-<section id="code" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Code</h1>
+<section id="code" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Code</h1>
 <p>this code will:</p>
 <ul>
-<li>go into your file folder</li>
-<li>sort the files by datetime</li>
-<li>choose the most recent file</li>
-<li>select the file path</li>
-<li>then read in the file path and assign it to <code>df</code></li>
+<li>read in the airquality dataset</li>
+<li>produce a ggplot of it</li>
+<li>the ggplot will be stratified by month</li>
 </ul>
-<div class="cell window-style">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(df <span class="ot">&lt;-</span> airquality <span class="sc">|&gt;</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(Month)) <span class="sc">|&gt;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre class="watch"><code># A tibble: 153 × 6
-   Ozone Solar.R  Wind  Temp Month   Day
-   &lt;int&gt;   &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;int&gt;
- 1    96     167   6.9    91     9     1
- 2    78     197   5.1    92     9     2
- 3    73     183   2.8    93     9     3
- 4    91     189   4.6    93     9     4
- 5    47      95   7.4    87     9     5
- 6    32      92  15.5    84     9     6
- 7    20     252  10.9    80     9     7
- 8    23     220  10.3    78     9     8
- 9    21     230  10.9    75     9     9
-10    24     259   9.7    73     9    10
-# … with 143 more rows</code></pre>
-</div>
-</div>
-<p><br></p>
-<p>Note: that code above comes from an external script. To call that code, all you need to do is the following, where the code chunk is blank but contains the name of the chunk in the external file - <code>{r chunk-name}</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r read-chunk}</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="in">#| eval: false</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in">(df &lt;- airquality |&gt;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="in">  arrange(desc(Month)) |&gt;</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="in">  as_tibble())</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r make-plot}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="in">(</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="in">  plot &lt;- df |&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="in">    ggplot() + </span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="in">    geom_point(aes(Ozone,Temp)) +</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="in">    facet_grid(~Month)</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 37 rows containing missing values (geom_point).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="plot1-2_files/figure-html/make-plot-1.png" class="img-fluid" width="672"></p>
+</div>
 </div>
 
 
